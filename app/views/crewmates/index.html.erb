@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="header">
+        <div class="header-text">
+            <h1>ArgoCrew</h1>
+            <p>By Jason</p>
+        </div>
+    </div>
+
+    <div class="form">
+        <h2 class="mb-2">Ajouter un(e) Argonaute</h2>
+        <p class="mb-1">Entrez le nom de l'argonaute</p>
+        <%= form_for(@crewmate) do |f| %>
+            <%= f.text_field :name, placeholder: 'Entrez un nom', class: 'form-input' %>
+            <%= f.submit 'Ajouter un Argonaute', class: "form-btn" %>
+        <% end %>
+    </div>
+
+    <h2>Membres de l'équipage</h2>
+    <div class="list">
+        <% @crewmates.each do |crewmate| %>
+            <div class="card">
+                <p class="name"><%= crewmate.name %></p>
+                <%= link_to crewmate_path(crewmate), method: :delete do %>
+                    <button class="red-btn">Renvoyer</button>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="footer">
+        <p>Réalisé par Jason en Anthestérion de l'an 515 avant JC</p>
+    </div>
+</div>
